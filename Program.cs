@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Globalization;
+using System.Numerics;
 
 namespace Projekt_alles_mögliche
 {
@@ -30,7 +32,7 @@ namespace Projekt_alles_mögliche
                 Console.WriteLine("");
                 Console.WriteLine("     1 Kleiner Taschenrechner");
                 Console.WriteLine("     2 Berechnungen am Kreis");
-                Console.WriteLine("     3 Noten durchschnitt ermitteln");
+                Console.WriteLine("     3 Berechnungen von Unendlichen Zahlen");
                 Console.WriteLine("     E Das Programm beenden");
                 Console.WriteLine("");
                 Console.WriteLine("     Bitte gib jetzt den Menü Punkt als Zahl ein, um zu diesem zu gelangen:");
@@ -46,7 +48,7 @@ namespace Projekt_alles_mögliche
                 }
                 else if (y == "3")
                 {
-
+                    Zahlenberechnen();
                 }
                 else if (y == "e" || y == "E")
                 {
@@ -602,6 +604,195 @@ namespace Projekt_alles_mögliche
                 Console.ReadLine();
                 umfangdrei();
             }
+        }
+        static void Zahlenberechnen()
+        {
+            string y;
+            Console.Clear();
+            Console.WriteLine("");
+            Console.WriteLine("     |-------------------------------------|");
+            Console.WriteLine("     | Berechnungen von Unendlichen Zahlen |");
+            Console.WriteLine("     |-------------------------------------|");
+            Console.WriteLine("         | by Dr.PPSN |");
+            Console.WriteLine("         --------------");
+            Console.WriteLine("");
+            //Menü text
+            Console.WriteLine("     Bitte wähle aus welche Zahl du berechnen willst.");
+            Console.WriteLine("");
+            Console.WriteLine("     1 Fibonacci Folge");
+            Console.WriteLine("     2 Der Goldene schnitt");
+            Console.WriteLine("     3 Kreiszahl PI");
+            Console.WriteLine("     E Zurück ins Hauptmenü");
+            Console.WriteLine("");
+            y = Console.ReadLine();
+            if (y == "1")
+            {
+                Fibonacci();
+            }
+            else if (y == "2")
+            {
+                gschnitt();
+            }
+            else if (y == "3")
+            {
+                Pi();
+            }
+            else if (y == "E" || y == "e")
+            {
+                Start();
+            }
+            else
+            {
+                Console.WriteLine("     Eingabe Ungültig!");
+                Console.WriteLine("     Bitte drücke die Enter Taste um fortzufahren");
+                Console.ReadLine();
+                Zahlenberechnen();
+            }
+        }
+        static void Fibonacci()
+        {
+            Console.Clear();
+            Console.WriteLine("");
+            Console.WriteLine("     |---------------------------------|");
+            Console.WriteLine("     | Fibonacci Zahlenfolge berechnen |");
+            Console.WriteLine("     |---------------------------------|");
+            Console.WriteLine("         | by Dr.PPSN |");
+            Console.WriteLine("         --------------");
+            Console.WriteLine("");
+            Console.WriteLine("     Bitte gib jetzt ein, bis zu welcher stelle die Fibonacci");
+            Console.WriteLine("     Zahlenfolge berechnet werden soll.");
+            Console.WriteLine("     Oder schreibe ein E um ins vorherige Menü zu gelangen.");
+            Console.WriteLine("");
+            //variablen deklarieren
+            string geg = Console.ReadLine();
+            int eingabe;
+            BigInteger a = BigInteger.Parse("1");
+            BigInteger b = BigInteger.Parse("0");
+            BigInteger y = BigInteger.Parse("0");
+            //überprüfen der eingabe
+            if (geg.All(char.IsDigit))
+            {
+                //ausgabe der folge
+                eingabe = Convert.ToInt32(geg);
+                if (eingabe >= 1)
+                {
+                    for (int i = 0; i <= eingabe; i++)
+                    {
+                        //fibonacci folge berechnen
+                        y = a + b;
+                        a = b;
+                        b = y;
+                        Console.WriteLine(a);
+                    }
+                    Console.WriteLine("");
+                    Console.WriteLine("     Die "+eingabe+". stelle von der Fibonacci Folge ist:");
+                    Console.WriteLine(      a);
+                    Console.WriteLine("");
+                    Console.WriteLine("     Bitte drücke die Enter Taste um fortzufahren");
+                    Console.ReadLine();
+                    Fibonacci();
+                }
+                else
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("     Eingabe Ungültig!");
+                    Console.WriteLine("     Bitte drücke die Enter Taste um fortzufahren");
+                    Console.ReadLine();
+                    Fibonacci();
+                }
+            }
+            else if (geg == "E" || geg == "e")
+            {
+                Zahlenberechnen();
+            }
+            else
+            {
+                Console.WriteLine("");
+                Console.WriteLine("     Eingabe Ungültig!");
+                Console.WriteLine("     Bitte drücke die Enter Taste um fortzufahren");
+                Console.ReadLine();
+                Fibonacci();
+            }
+        }
+        static void gschnitt()
+        {
+            double wurzel = 5;
+            Console.Clear();
+            Console.WriteLine("");
+            Console.WriteLine("     |---------------------|");
+            Console.WriteLine("     | Der Goldene schnitt |");
+            Console.WriteLine("     |---------------------|");
+            Console.WriteLine("         | by Dr.PPSN |");
+            Console.WriteLine("         --------------");
+            Console.WriteLine("");
+            Console.WriteLine("Der Goldene schnitt ist:");
+            Console.WriteLine((1+Math.Sqrt(wurzel))/2);
+            Console.WriteLine("");
+            Console.WriteLine("Bitte drücke die Enter Taste um fortzufahren.");
+            Console.ReadLine();
+            Zahlenberechnen();
+        }
+        static void Pi()
+        {
+            Console.Clear();
+            Console.WriteLine("");
+            Console.WriteLine("     |------------------------|");
+            Console.WriteLine("     | Kreiszahl PI berechnen |");
+            Console.WriteLine("     |------------------------|");
+            Console.WriteLine("         | by Dr.PPSN |");
+            Console.WriteLine("         --------------");
+            Console.WriteLine("");
+            Console.WriteLine("     Bitte gib jetzt ein, bis zu welcher stelle die");
+            Console.WriteLine("     Kreiszahl Pi berechnet werden soll.");
+            Console.WriteLine("     Oder schreibe ein E um ins Haupt Menü zu gelangen.");
+            Console.WriteLine("");
+            //variablen deklarieren
+            string geg = Console.ReadLine();
+            int eingabe;
+            BigInteger a = BigInteger.Parse("0");
+            //überprüfen der eingabe
+            if (geg.All(char.IsDigit))
+            {
+                //ausgabe der folge
+                eingabe = Convert.ToInt32(geg);
+                if (eingabe >= 1)
+                {
+                    for (int i = 0; i <= eingabe; i++)
+                    {
+                        //Pi berechnen
+                        
+                        Console.WriteLine(a);
+                    }
+                    Console.WriteLine("");
+                    Console.WriteLine("     Die " + eingabe + ". stelle von der Kreiszahl Pi ist:");
+                    Console.WriteLine(a);
+                    Console.WriteLine("");
+                    Console.WriteLine("     Bitte drücke die Enter Taste um fortzufahren");
+                    Console.ReadLine();
+                    Fibonacci();
+                }
+                else
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("     Eingabe Ungültig!");
+                    Console.WriteLine("     Bitte drücke die Enter Taste um fortzufahren");
+                    Console.ReadLine();
+                    Fibonacci();
+                }
+            }
+            else if (geg == "E" || geg == "e")
+            {
+                Start();
+            }
+            else
+            {
+                Console.WriteLine("");
+                Console.WriteLine("     Eingabe Ungültig!");
+                Console.WriteLine("     Bitte drücke die Enter Taste um fortzufahren");
+                Console.ReadLine();
+                Fibonacci();
+            }
+
         }
     }
 }
